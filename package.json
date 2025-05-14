@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "gsap": "^3.13.0",
     "imagesloaded": "^5.0.0",
     "react": "^19.1.0",
