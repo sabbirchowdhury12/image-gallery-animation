@@ -379,3 +379,37 @@ main {
     --column-count: 8;
   }
 }
+
+.radial-clip {
+  clip-path: circle(0% at center);
+  transition: clip-path 0.5s ease-out;
+}
+
+.radial-clip.reveal {
+  clip-path: circle(100% at center);
+}
+
+/* For the diagonal spiral effect */
+.diagonal-motion {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Add blur transition support */
+.blur-transition {
+  transition: filter 0.3s ease-out;
+}
+
+/* Add styles for the new photographer sections */
+.heading__title:nth-of-type(5) {
+  color: #8e44ad;
+}
+
+.heading__title:nth-of-type(6) {
+  color: #16a085;
+}
+
+@media screen and (min-width: 65em) {
+  :root {
+    --column-count: 8;
+  }
+}

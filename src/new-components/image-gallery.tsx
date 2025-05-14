@@ -12,6 +12,7 @@ import { preloadImages } from "../utils/preload-images";
 import type { ImageItem } from "../lib/types";
 import { imageData } from "../lib/data";
 import Panel from "./panel";
+import Heading from "../components/heading";
 
 // Sample image data
 
@@ -553,16 +554,11 @@ export default function ImageGallery() {
 
   return (
     <div className="gallery-container">
-      <Frame />
-
-      <div className="heading">
-        <h2 className="heading__title">Shane Weber</h2>
-        <span className="heading__meta">
-          effect 01: straight linear paths, smooth easing, clean timing, minimal
-          rotation.
-        </span>
-      </div>
-
+      <Heading
+        title="Shane Weber"
+        meta=" effect 01: straight linear paths, smooth easing, clean timing, minimal
+          rotation."
+      />
       <Grid
         ref={gridRef}
         items={imageData.filter(
@@ -570,14 +566,10 @@ export default function ImageGallery() {
         )}
         onItemClick={onGridItemClick}
       />
-
-      <div className="heading">
-        <h2 className="heading__title">Manika Jorge</h2>
-        <span className="heading__meta">
-          effect 02: Adjusts mover count, rotation, timing, and animation feel.
-        </span>
-      </div>
-
+      <Heading
+        title="Manika Jorge"
+        meta=" effect 02: Adjusts mover count, rotation, timing, and animation feel."
+      />
       <Grid
         ref={gridRef}
         items={imageData.filter((item) => item.effect === "effect02")}
@@ -592,14 +584,16 @@ export default function ImageGallery() {
           panelRevealEase: "power2",
         }}
       />
-
-      <div className="heading">
+      {/* <div className="heading">
         <h2 className="heading__title">Angela Wong</h2>
         <span className="heading__meta">
           effect 03: Big arcs, smooth start, powerful snap, slow reveal.
         </span>
-      </div>
-
+      </div> */}
+      <Heading
+        title="Angela Wong"
+        meta=" effect 03: Big arcs, smooth start, powerful snap, slow reveal."
+      />
       <Grid
         ref={gridRef}
         items={imageData.filter((item) => item.effect === "effect03")}
@@ -619,15 +613,11 @@ export default function ImageGallery() {
           panelRevealDurationFactor: 4,
         }}
       />
-
-      <div className="heading">
-        <h2 className="heading__title">Kaito Nakamo</h2>
-        <span className="heading__meta">
-          effect 04: Quick upward motion with bold blending and smooth slow
-          reveal.
-        </span>
-      </div>
-
+      <Heading
+        title="Kaito Nakamo"
+        meta=" effect 04: Quick upward motion with bold blending and smooth slow
+          reveal."
+      />
       <Grid
         ref={gridRef}
         items={imageData.filter((item) => item.effect === "effect04")}
@@ -646,21 +636,62 @@ export default function ImageGallery() {
         }}
       />
 
-      <Panel ref={panelRef} onClose={resetView} item={currentItem} />
+      {/* --------------------------new--------------------------- */}
+      <Heading
+        title="Eliza Cortez"
+        meta="effect 05: Diagonal spiral path with dramatic scaling and rotation for
+          a dynamic transition."
+      />
+      <Grid
+        ref={gridRef}
+        items={imageData.filter((item) => item.effect === "effect05")}
+        onItemClick={onGridItemClick}
+        effectConfig={{
+          steps: 7,
+          clipPathDirection: "left-right",
+          stepDuration: 0.4,
+          stepInterval: 0.08,
+          rotationRange: 15,
+          wobbleStrength: 30,
+          moverPauseBeforeExit: 0.3,
+          moverEnterEase: "back.out(1.7)",
+          moverExitEase: "power3.inOut",
+          panelRevealEase: "power2.out",
+          panelRevealDurationFactor: 3,
+          pathMotion: "diagonal",
+          sineAmplitude: 150,
+          sineFrequency: Math.PI * 1.5,
+        }}
+      />
 
-      <footer className="frame frame--footer">
-        <span>
-          Made by
-          <a href="#" className="line">
-            @codrops
-          </a>
-        </span>
-        <span>
-          <a href="#" className="line">
-            All demos
-          </a>
-        </span>
-      </footer>
+      <Heading
+        title="Marcus Feng"
+        meta="effect 06: Ethereal staggered reveal with fade and blur for a dreamy,
+          cinematic transition."
+      />
+
+      <Grid
+        ref={gridRef}
+        items={imageData.filter((item) => item.effect === "effect06")}
+        onItemClick={onGridItemClick}
+        effectConfig={{
+          steps: 12,
+          clipPathDirection: "radial",
+          stepDuration: 0.3,
+          stepInterval: 0.04,
+          rotationRange: 5,
+          moverPauseBeforeExit: 0.15,
+          moverEnterEase: "circ.out",
+          moverExitEase: "expo.inOut",
+          panelRevealEase: "expo.out",
+          panelRevealDurationFactor: 2.5,
+          moverBlendMode: "screen",
+          pathMotion: "sine",
+          sineAmplitude: 80,
+          sineFrequency: Math.PI * 0.8,
+        }}
+      />
+      <Panel ref={panelRef} onClose={resetView} item={currentItem} />
     </div>
   );
 }
